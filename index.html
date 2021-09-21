@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript Asynchronous - Callback</title>
+        <meta charset="UTF-8" />
+        <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+        crossorigin="anonymous"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="text-center mt-5">Data Mahasiswa</h1>
+        <table class="table table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Username</td>
+                    <td>Email</td>
+                    <td>Address</td>
+                    <td>Company</td>
+                </tr>
+            </thead>
+            <tbody id="test">
+            </tbody>
+        </table>
+        </div>
+        <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"
+        ></script>
+        <script>
+            function getData(url, cb){
+                let xhr = new XMLHttpRequest();
+                xhr.onload = function(){
+                    if(xhr.status === 200){
+                        return cb(JSON.parse(xhr.responseText));
+                    }
+                };
+                xhr.open("GET", url);
+                xhr.send();
+            }
+            const data = getData("https://jsonplaceholder.typicode.com/users", function(data){
+                let text = "";
+                text += 
+                '<tr>'+
+                    '<td>'+ data[0]['id']+'</td>'+
+                    '<td>'+ data[0]['name']+'</td>'+
+                    '<td>'+ data[0]['username']+'</td>'+
+                    '<td>'+ data[0]['email']+'</td>'+
+                    '<td>'+ data[0]['address']['street']+', '+data[0]['address']['suite']+', '+data[0]['address']['city']+'</td>'+
+                    '<td>'+ data[0]['company']['name']+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                    '<td>'+ data[1]['id']+'</td>'+
+                    '<td>'+ data[1]['name']+'</td>'+
+                    '<td>'+ data[1]['username']+'</td>'+
+                    '<td>'+ data[1]['email']+'</td>'+
+                    '<td>'+ data[1]['address']['street']+', '+data[1]['address']['suite']+', '+data[1]['address']['city']+'</td>'+
+                    '<td>'+ data[1]['company']['name']+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                    '<td>'+ data[2]['id']+'</td>'+
+                    '<td>'+ data[2]['name']+'</td>'+
+                    '<td>'+ data[2]['username']+'</td>'+
+                    '<td>'+ data[2]['email']+'</td>'+
+                    '<td>'+ data[2]['address']['street']+', '+data[2]['address']['suite']+', '+data[2]['address']['city']+'</td>'+
+                    '<td>'+ data[2]['company']['name']+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                    '<td>'+ data[3]['id']+'</td>'+
+                    '<td>'+ data[3]['name']+'</td>'+
+                    '<td>'+ data[3]['username']+'</td>'+
+                    '<td>'+ data[3]['email']+'</td>'+
+                    '<td>'+ data[3]['address']['street']+', '+data[3]['address']['suite']+', '+data[3]['address']['city']+'</td>'+
+                    '<td>'+ data[3]['company']['name']+'</td>'+
+                '</tr>'
+                +
+                '<tr>'+
+                    '<td>'+ data[4]['id']+'</td>'+
+                    '<td>'+ data[4]['name']+'</td>'+
+                    '<td>'+ data[4]['username']+'</td>'+
+                    '<td>'+ data[4]['email']+'</td>'+
+                    '<td>'+ data[4]['address']['street']+', '+data[4]['address']['suite']+', '+data[4]['address']['city']+'</td>'+
+                    '<td>'+ data[4]['company']['name']+'</td>'+
+                '</tr>'
+                +
+                '<tr>'+
+                    '<td>'+ data[5]['id']+'</td>'+
+                    '<td>'+ data[5]['name']+'</td>'+
+                    '<td>'+ data[5]['username']+'</td>'+
+                    '<td>'+ data[5]['email']+'</td>'+
+                    '<td>'+ data[5]['address']['street']+', '+data[5]['address']['suite']+', '+data[5]['address']['city']+'</td>'+
+                    '<td>'+ data[5]['company']['name']+'</td>'+
+                '</tr>'
+                +
+                '<tr>'+
+                    '<td>'+ data[6]['id']+'</td>'+
+                    '<td>'+ data[6]['name']+'</td>'+
+                    '<td>'+ data[6]['username']+'</td>'+
+                    '<td>'+ data[6]['email']+'</td>'+
+                    '<td>'+ data[6]['address']['street']+', '+data[6]['address']['suite']+', '+data[6]['address']['city']+'</td>'+
+                    '<td>'+ data[6]['company']['name']+'</td>'+
+                '</tr>'
+                +
+                '<tr>'+
+                    '<td>'+ data[7]['id']+'</td>'+
+                    '<td>'+ data[7]['name']+'</td>'+
+                    '<td>'+ data[7]['username']+'</td>'+
+                    '<td>'+ data[7]['email']+'</td>'+
+                    '<td>'+ data[7]['address']['street']+', '+data[7]['address']['suite']+', '+data[7]['address']['city']+'</td>'+
+                    '<td>'+ data[7]['company']['name']+'</td>'+
+                '</tr>'
+                +
+                '<tr>'+
+                    '<td>'+ data[8]['id']+'</td>'+
+                    '<td>'+ data[8]['name']+'</td>'+
+                    '<td>'+ data[8]['username']+'</td>'+
+                    '<td>'+ data[8]['email']+'</td>'+
+                    '<td>'+ data[8]['address']['street']+', '+data[8]['address']['suite']+', '+data[8]['address']['city']+'</td>'+
+                    '<td>'+ data[8]['company']['name']+'</td>'+
+                '</tr>'
+                +
+                '<tr>'+
+                    '<td>'+ data[9]['id']+'</td>'+
+                    '<td>'+ data[9]['name']+'</td>'+
+                    '<td>'+ data[9]['username']+'</td>'+
+                    '<td>'+ data[9]['email']+'</td>'+
+                    '<td>'+ data[9]['address']['street']+', '+data[9]['address']['suite']+', '+data[9]['address']['city']+'</td>'+
+                    '<td>'+ data[9]['company']['name']+'</td>'+
+                '</tr>';
+                document.getElementById('test').innerHTML = text;
+            });
+        </script>
+    </body>
+</html>
