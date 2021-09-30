@@ -75,8 +75,5 @@
 //     this.innerHTML = 'Hi! Click Me';
 //     }
 // });
-
-const data = fetch('https://jsonplaceholder.typicode.com/users');
-data   
-    .then(function(res){return res.json()})
-    .then(res => console.log(res));
+// 73991280e5124b388b6c65cf1cac98c8
+// https://newsapi.org/v2/top-headlines?country=us&apiKey=73991280e5124b388b6c65cf1cac98c8
